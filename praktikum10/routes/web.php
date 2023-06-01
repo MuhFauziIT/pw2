@@ -1,7 +1,8 @@
 <?php
 
-
-use App\Http\Controllers\SkillController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,26 +20,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/salam', function () {
-    return "selamat datang";
-});
+// Bikin Routing untuk dashboard pake controller
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::get('/kabar', function () {
-    return view('kondisi');
-});
+// Bikin Routing untuk produk pake controller
+Route::get('/produk', [ProdukController::class, 'index']);
 
-// buat route nilai
-
-Route::get('/nilai', function () {
-    return view('nilai');
-});
-
-Route::get('/pasien', function () {
-    return view('pasien');
-});
-
-// buat route skill
-Route::get('/skill', [SkillController::class, 'index']);
-
-// buat route hasil form skill
-Route::post('/skillhasil', [SkillController::class, 'skill']);
+// Buat route untuk frontend index
+Route::get('/index', [FrontendController::class, 'index']);
+// Buat route untuk frontend about
+Route::get('/about', [FrontendController::class, 'about']);
+// Buat route untuk frontend choose
+Route::get('/choose', [FrontendController::class, 'choose']);
+// Buat route untuk frontend contact
+Route::get('/contact', [FrontendController::class, 'contact']);
+// Buat route untuk frontend services
+Route::get('/services', [FrontendController::class, 'services']);
+// Buat route untuk frontend team
+Route::get('/team', [FrontendController::class, 'team']);
